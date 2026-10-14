@@ -127,7 +127,7 @@ def main():
     joel = LunchBreak("Joel", 3000)  # A second object has a DIFFERENT wallet.
     jordan = LunchBreak("Jordan", 4000) #object jordan to test the GroundnutRolex class.
     print(jordan.buy(gnut_rolex))
-    print(f"Jordan's balance: {jordan.wallet.balance}UGX")
+    print(f"Jordan's balance: {jordan.wallet.balance}UGX.")
     print(sarah.buy(menu[2]))
     print(sarah.buy(menu[1]))  # Refused; balance and order count must stay put.
     print(joel.buy(menu[1]))
