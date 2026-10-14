@@ -25,6 +25,15 @@ class LunchWallet:
             return False  # A normal refused purchase; no exception lesson needed.
         self.balance = self.balance - amount
         return True
+    
+    def top_up(self, amount):
+        # Only positive amounts are allowed to increase the wallet balance.
+        if amount <= 0:
+            return False
+
+        self.balance = self.balance + amount
+        return True
+
 
 
 # ACT 2: Meal states WHAT every menu item must do; children supply HOW.
