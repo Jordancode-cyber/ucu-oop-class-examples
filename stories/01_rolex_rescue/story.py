@@ -1,3 +1,4 @@
+
 """The Rolex Rescue: Sarah's lunch break becomes a tiny OOP adventure.
 Run: python3 story.py. All prices are invented classroom values.
 Read Acts 1-5 in order; each act gives the next concept a job.
