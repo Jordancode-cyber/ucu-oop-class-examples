@@ -1,3 +1,4 @@
+
 """The Rolex Rescue: Sarah's lunch break becomes a tiny OOP adventure.
 Run: python3 story.py. All prices are invented classroom values.
 Read Acts 1-5 in order; each act gives the next concept a job.
@@ -26,6 +27,12 @@ class LunchWallet:
         self.balance = self.balance - amount
         return True
     
+    #Add a method for extension 3 top-up the wallet with a free banana
+    def top_up(self, amount):
+        if amount <= 0:
+            return False
+        self.balance = self.balance + amount
+        return True
     def top_up(self, amount):
         # Only positive amounts are allowed to increase the wallet balance.
         if amount <= 0:
@@ -103,6 +110,16 @@ class HomePackedLunch:  # Unrelated to Meal; still has the behaviour we need.
     def describe(self):
         return "Home-packed lunch: the auntie sponsorship package."
 
+#Extension 3: Banana From Home
+class FreeBanana:
+    name = "Free Banana From Home"
+
+    def price(self):
+        return 0
+
+    def describe(self):
+        return "Free Banana From Home: You can get a free banana from Home."
+    
 
 # ACT 4: The customer HAS-A wallet, rather than IS-A wallet.
 class LunchBreak:
@@ -154,7 +171,7 @@ gnut_rolex = GroundnutRolex()
 # ACT 5: The complete story, from the first choice to the ending.
 def main():
     print("=== THE ROLEX RESCUE ===")
-    menu = [Rolex(), Kikomando("Kikomando"), FeaturedRolex(), HomePackedLunch()]
+    menu = [Rolex(), Kikomando("Kikomando"), FeaturedRolex(), HomePackedLunch(), FreeBanana()] #Added FreeBanana to the menu 
     show_menu(menu)  # The unrelated packed lunch works too: duck typing.
     sarah = LunchBreak("Sarah", 5000)
     joel = LunchBreak("Joel", 3000)  # A second object has a DIFFERENT wallet.
@@ -175,3 +192,6 @@ def main():
 # This familiar run guard stops the story running when imported for checking.
 if __name__ == "__main__":
     main()
+
+
+
