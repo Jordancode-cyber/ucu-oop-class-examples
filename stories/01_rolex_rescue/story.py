@@ -113,10 +113,24 @@ class LunchBreak:
             return f"{self.student} gets {meal.name}. Lunch is saved!"
         return f"{self.student}: {meal.name} is over budget. We shall admire it."
 
+#Extension 5: First purchase summary (read-only method to generate a receipt)
+    def receipt(self):
+        lines = [f"{self.student}'s lunch receipt","-----------------------------"]
+        if not self._orders:
+            lines.append("No purchases yet.")
+        else:
+            for order in self._orders:
+                lines.append(f"-{order.name}: UGX {order.price():,}")
+            total_spent = sum(order.price() for order in self._orders)
+            lines.append(f"Total spent: UGX {total_spent:,}")
+            lines.append(f"Remaining balance: UGX {self.wallet.balance:,}")
+            lines.append(f"Total items bought: {self.order_count}")
+        return "\n".join(lines)          
 
 def show_menu(items):  # Ordinary function; a list + loop recall Week 1.
     for item in items:
         print(item.describe())  # Polymorphism: SAME call, DIFFERENT results.
+
 
 ##Extension 6: Groundnut rolex##
 class GroundnutRolex(Rolex):
