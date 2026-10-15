@@ -56,6 +56,16 @@ class Kikomando(Meal):  # Two children of Meal: hierarchical inheritance.
         return 2500
 
 
+##Extension 1: Passion juice is a meal that costs UGX 1,500.##
+class Juice(Meal):
+    def __init__(self):
+        super().__init__("Passion Juice")
+
+    def price(self):
+        return 1500 
+
+
+
 class AvocadoRolex(Rolex):  # Meal -> Rolex -> AvocadoRolex: multilevel.
     def __init__(self):
         super().__init__(eggs=2)
