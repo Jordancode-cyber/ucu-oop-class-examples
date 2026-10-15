@@ -33,6 +33,15 @@ class LunchWallet:
             return False
         self.balance = self.balance + amount
         return True
+    def top_up(self, amount):
+        # Only positive amounts are allowed to increase the wallet balance.
+        if amount <= 0:
+            return False
+
+        self.balance = self.balance + amount
+        return True
+
+
 
 # ACT 2: Meal states WHAT every menu item must do; children supply HOW.
 class Meal(ABC):
@@ -61,6 +70,16 @@ class Rolex(Meal):  # A Rolex IS-A Meal: single inheritance.
 class Kikomando(Meal):  # Two children of Meal: hierarchical inheritance.
     def price(self):
         return 2500
+
+
+##Extension 1: Passion juice is a meal that costs UGX 1,500.##
+class Juice(Meal):
+    def __init__(self):
+        super().__init__("Passion Juice")
+
+    def price(self):
+        return 1500 
+
 
 
 class AvocadoRolex(Rolex):  # Meal -> Rolex -> AvocadoRolex: multilevel.
@@ -120,10 +139,24 @@ class LunchBreak:
             return f"{self.student} gets {meal.name}. Lunch is saved!"
         return f"{self.student}: {meal.name} is over budget. We shall admire it."
 
+#Extension 5: First purchase summary (read-only method to generate a receipt)
+    def receipt(self):
+        lines = [f"{self.student}'s lunch receipt","-----------------------------"]
+        if not self._orders:
+            lines.append("No purchases yet.")
+        else:
+            for order in self._orders:
+                lines.append(f"-{order.name}: UGX {order.price():,}")
+            total_spent = sum(order.price() for order in self._orders)
+            lines.append(f"Total spent: UGX {total_spent:,}")
+            lines.append(f"Remaining balance: UGX {self.wallet.balance:,}")
+            lines.append(f"Total items bought: {self.order_count}")
+        return "\n".join(lines)          
 
 def show_menu(items):  # Ordinary function; a list + loop recall Week 1.
     for item in items:
         print(item.describe())  # Polymorphism: SAME call, DIFFERENT results.
+
 
 ##Extension 6: Groundnut rolex##
 class GroundnutRolex(Rolex):
@@ -144,7 +177,7 @@ def main():
     joel = LunchBreak("Joel", 3000)  # A second object has a DIFFERENT wallet.
     jordan = LunchBreak("Jordan", 4000) #object jordan to test the GroundnutRolex class.
     print(jordan.buy(gnut_rolex))
-    print(f"Jordan's balance: {jordan.wallet.balance}UGX")
+    print(f"Jordan's balance: {jordan.wallet.balance}UGX.")
     print(sarah.buy(menu[2]))
     print(sarah.buy(menu[1]))  # Refused; balance and order count must stay put.
     print(joel.buy(menu[1]))
