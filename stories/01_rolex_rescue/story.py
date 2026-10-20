@@ -127,6 +127,7 @@ class LunchBreak:
          total = total + LunchMoney(choice.price())
 
         return total
+    
 
     
 def show_menu(items):  # Ordinary function; a list + loop recall Week 1.
