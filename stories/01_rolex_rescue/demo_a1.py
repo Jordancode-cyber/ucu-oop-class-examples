@@ -30,3 +30,4 @@ for invalid in [-1, 2.5, True]:
         LunchMoney(invalid)
     except ValueError as error:
         print(f"Invalid value {invalid!r} refused: {error}")
+        
