@@ -68,6 +68,9 @@ class Rolex(Meal):  # A Rolex IS-A Meal: single inheritance.
 
 
 class Kikomando(Meal):  # Two children of Meal: hierarchical inheritance.
+    def __init__(self, name="Kikomando"):
+        super().__init__(name)
+
     def price(self):
         return 2500
 
@@ -138,7 +141,18 @@ class LunchBreak:
             self._orders.append(meal)  # A collection of objects, not just names.
             return f"{self.student} gets {meal.name}. Lunch is saved!"
         return f"{self.student}: {meal.name} is over budget. We shall admire it."
+    
+    
+    def preview_total(self, choices):
+        from later_topics import LunchMoney
 
+        total = LunchMoney(0)
+
+        for choice in choices:
+         total = total + LunchMoney(choice.price())
+
+        return total
+    
 #Extension 5: First purchase summary (read-only method to generate a receipt)
     def receipt(self):
         lines = [f"{self.student}'s lunch receipt","-----------------------------"]
@@ -151,8 +165,10 @@ class LunchBreak:
             lines.append(f"Total spent: UGX {total_spent:,}")
             lines.append(f"Remaining balance: UGX {self.wallet.balance:,}")
             lines.append(f"Total items bought: {self.order_count}")
-        return "\n".join(lines)          
+        return "\n".join(lines)         
+     
 
+    
 def show_menu(items):  # Ordinary function; a list + loop recall Week 1.
     for item in items:
         print(item.describe())  # Polymorphism: SAME call, DIFFERENT results.
