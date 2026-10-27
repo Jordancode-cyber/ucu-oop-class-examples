@@ -1,6 +1,6 @@
 # GROUP.md: The Rolex Rescue
 
-## Members(Group)
+## Members(Quick Group)
 
 Member              GitHub        Reg.number 
 
@@ -99,7 +99,6 @@ Ankunda Claire - Group.md file
 Every PR needs useful comments from all the other members before merge.
 
 | PR | Commented by |
-|---|---|
 | #9 | [Atukunda Lynn,Nambuya Gloria, Ankunda Claire, Feta Jordan, Asango Joan] 
 | #10 | [Atukunda Lynn,Nambuya Gloria, Ankunda Claire, Feta Jordan, Asango Joan] 
 | #11 |  [Atukunda Lynn,Nambuya Gloria, Ankunda Claire, Feta Jordan, Asango Joan] 
